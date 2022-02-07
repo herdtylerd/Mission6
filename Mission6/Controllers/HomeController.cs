@@ -23,10 +23,19 @@ namespace Mission6.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        // Add tasks
+        [HttpGet]
+        public IActionResult AddTask()
         {
             return View();
         }
+        
+        //[HttpPost]
+        //public IActionResult AddTask()
+        //{
+        //    return View();
+        //}
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
