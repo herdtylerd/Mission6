@@ -23,6 +23,15 @@ namespace Mission6.Controllers
             return View();
         }
 
+        public IActionResult QuadrantsView()
+        {
+            return View();
+        }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
         // Add tasks
         [HttpGet]
         public IActionResult AddTask()
