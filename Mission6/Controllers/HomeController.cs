@@ -25,7 +25,8 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
-            return View();
+            var applications = tContext.responses.ToList();
+            return View(applications);
         }
 
         // Add tasks
