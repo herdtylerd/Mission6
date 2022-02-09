@@ -41,7 +41,7 @@ namespace Mission6.Controllers
         public IActionResult AddTask()
         {
             ViewBag.Categories = tContext.Categories.ToList();
-            return View();
+            return View(new AddTask());
         }
 
         [HttpPost]
@@ -49,7 +49,6 @@ namespace Mission6.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Viewbag
                 tContext.Add(at);
                 tContext.SaveChanges();
                 return RedirectToAction("QuadrantsView");
@@ -62,12 +61,11 @@ namespace Mission6.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditTask(int taskId)
+        public IActionResult EditTask(int taskid)
         {
-            // Viewbag
+            ViewBag.Categories = tContext.Categories.ToList();
 
-            var task = tContext.Responses
-                .Single(x => x.TaskId == taskId);
+            var task = tContext.Responses.SingleOrDefault(x => x.TaskId == taskid);
 
             return View("AddTask", task);
         }
