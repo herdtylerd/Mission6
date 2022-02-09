@@ -32,6 +32,8 @@ namespace Mission6.Controllers
             return View(tasks);
         } 
 
+
+
         // Add tasks
         [HttpGet]
         public IActionResult AddTask()
@@ -43,9 +45,56 @@ namespace Mission6.Controllers
         [HttpPost]
         public IActionResult AddTask(AddTask at)
         {
-            tContext.Add(at);
+            if (ModelState.IsValid)
+            {
+                // Viewbag
+                tContext.Add(at);
+                tContext.SaveChanges();
+                return RedirectToAction("QuadrantsView");
+            }
+            else
+            {
+                // Viewbag
+                return View();
+            }            
+        }
+
+        [HttpGet]
+        public IActionResult EditTask(int taskId)
+        {
+            // Viewbag
+
+            var task = tContext.Responses
+                .Single(x => x.TaskId == taskId);
+
+            return View("AddTask", task);
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(AddTask t)
+        {
+            tContext.Update(t);
             tContext.SaveChanges();
-            return View();
+
+            return RedirectToAction("QuadrantsView");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int taskId)
+        {
+            var task = tContext.Responses
+                .Single(x => x.TaskId == taskId);
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(AddTask t)
+        {
+            tContext.Responses.Remove(t);
+            tContext.SaveChanges();
+
+            return RedirectToAction("QuadrantsView");
         }
 
     }
