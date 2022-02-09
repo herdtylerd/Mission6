@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission6.Models;
 using System;
@@ -25,7 +26,9 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
-            var applications = tContext.responses.ToList();
+            var applications = tContext.Responses
+                .Include(x => x.Category)
+                .ToList();
             return View(applications);
         }
 
