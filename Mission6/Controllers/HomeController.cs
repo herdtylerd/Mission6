@@ -33,7 +33,6 @@ namespace Mission6.Controllers
         } 
 
 
-
         // Add tasks
         [HttpGet]
         public IActionResult AddTask()
