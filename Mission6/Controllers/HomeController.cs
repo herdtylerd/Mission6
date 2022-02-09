@@ -56,7 +56,7 @@ namespace Mission6.Controllers
             }
             else
             {
-                // Viewbag
+                ViewBag.Categories = tContext.Categories.ToList();
                 return View();
             }            
         }

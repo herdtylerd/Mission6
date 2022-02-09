@@ -10,9 +10,6 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
 
-
-
-
         <!-- Task, due date, quadrant,
         Category (Dropdown: Home, School,
         work, Church), Completed (True/False)-->
@@ -26,16 +23,16 @@
         <label asp-for="Quadrant">Quadrant</label>
         <select asp-for="Quadrant">
             <option value="">Select an option</option>
-            <option value="Quadrant I">
+            <option value="1">
                 Quadrant I: Important / Urgent
             </option>
-            <option value="Quadrant II">
+            <option value="2">
                 Quadrant II: Important / Not Urgent
             </option>
-            <option value="Quadrant III">
+            <option value="3">
                 Quadrant III: Not Important / Urgent
             </option>
-            <option value="Quadrant IV">
+            <option value="4">
                 Quadrant IV: Not Important / Not Urgent
             </option>
         </select><br />
@@ -44,10 +41,10 @@
         <label asp-for="CategoryId">Category</label>
         <select asp-for="CategoryId">
             <option value="">Select a Category</option>
-            @*@foreach (Category c in ViewBag.Categories)
+            @foreach (Category c in ViewBag.Categories)
             {
                 <option value="@c.CategoryId">@c.CategoryName</option>
-            }*@
+            }
 
         </select><br />
 
@@ -58,6 +55,6 @@
             <option value="false">False</option>
         </select><br />
 
-        <input type="submit" value="Add Task" asp-controller="Home" asp-action="Add Task" class="btn btn-primary" />
+        <input type="submit" value="Add Task" asp-controller="Home" asp-action="AddTask" class="btn btn-primary" />
     </form>
 </div>
