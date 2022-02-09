@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission6.Models;
 using System;
@@ -25,14 +26,17 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
-            return View();
-        }
+            var tasks = tContext.Responses
+                .Include(x => x.Category)
+                .ToList();
+            return View(tasks);
+        } 
 
         // Add tasks
         [HttpGet]
         public IActionResult AddTask()
         {
-            var categories = tContext.Categories.ToList();
+            ViewBag.Categories = tContext.Categories.ToList();
             return View();
         }
 
