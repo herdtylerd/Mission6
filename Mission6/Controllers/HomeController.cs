@@ -11,11 +11,11 @@ namespace Mission6.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private TaskContext tContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(TaskContext someName)
         {
-            _logger = logger;
+            tContext = someName;
         }
 
         public IActionResult Index()
@@ -27,10 +27,6 @@ namespace Mission6.Controllers
         {
             return View();
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         // Add tasks
         [HttpGet]
@@ -38,18 +34,14 @@ namespace Mission6.Controllers
         {
             return View();
         }
-        
-        //[HttpPost]
-        //public IActionResult AddTask()
-        //{
-        //    return View();
-        //}
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult AddTask(AddTask at)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            tContext.Add(at);
+            tContext.SaveChanges();
+            return View();
         }
+
     }
 }
