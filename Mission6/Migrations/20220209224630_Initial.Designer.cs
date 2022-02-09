@@ -9,7 +9,7 @@ using Mission6.Models;
 namespace Mission6.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20220209213304_Initial")]
+    [Migration("20220209224630_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,6 +17,38 @@ namespace Mission6.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
+
+            modelBuilder.Entity("Mission6.Models.AddTask", b =>
+                {
+                    b.Property<int>("TaskId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Completed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DueDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Quadrant")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Task")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("TaskId");
+
+                    b.HasIndex("CategoryId1");
+
+                    b.ToTable("Responses");
+                });
 
             modelBuilder.Entity("Mission6.Models.Category", b =>
                 {
@@ -52,38 +84,6 @@ namespace Mission6.Migrations
                             CategoryId = 4,
                             CategoryName = "Church"
                         });
-                });
-
-            modelBuilder.Entity("Mission6.Models.AddTask", b =>
-                {
-                    b.Property<int>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CategoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("CategoryId1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Completed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("DueDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quadrant")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Task")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("TaskId");
-
-                    b.HasIndex("CategoryId1");
-
-                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("Mission6.Models.AddTask", b =>
