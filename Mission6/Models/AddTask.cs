@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mission4.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,9 +21,9 @@ namespace Mission6.Models
         [Required]
         public int Quadrant { get; set; }
 
-        public string Category { get; set; }
-
         public bool Completed { get; set; }
 
+        public string CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

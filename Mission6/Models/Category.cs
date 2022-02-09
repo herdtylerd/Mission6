@@ -11,6 +11,6 @@ namespace Mission4.Models
         [Key]
         [Required]
         public int CategoryId { get; set; }
-        public int CategoryNum { get; set; }
+        public string CategoryName { get; set; }
     }
 }

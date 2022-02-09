@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mission4.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,17 @@ namespace Mission6.Models
         }
 
         public DbSet<AddTask> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        //Seed Data
         protected override void OnModelCreating(ModelBuilder mb)
         {
-
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId=1,  CategoryName="Home"},
+                new Category { CategoryId = 2, CategoryName = "School" },
+                new Category { CategoryId = 3, CategoryName = "Work" },
+                new Category { CategoryId = 1, CategoryName = "Church" }
+            );
         }
 
     }
