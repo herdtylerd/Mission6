@@ -26,26 +26,77 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
-            var applications = tContext.Responses
+
+            var tasks = tContext.Responses
                 .Include(x => x.Category)
                 .ToList();
-            return View(applications);
-        }
+            return View(tasks);
+        } 
+
+
+
 
         // Add tasks
         [HttpGet]
         public IActionResult AddTask()
         {
-            var categories = tContext.Categories.ToList();
+            ViewBag.Categories = tContext.Categories.ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult AddTask(AddTask at)
         {
-            tContext.Add(at);
+            if (ModelState.IsValid)
+            {
+                // Viewbag
+                tContext.Add(at);
+                tContext.SaveChanges();
+                return RedirectToAction("QuadrantsView");
+            }
+            else
+            {
+                // Viewbag
+                return View();
+            }            
+        }
+
+        [HttpGet]
+        public IActionResult EditTask(int taskId)
+        {
+            // Viewbag
+
+            var task = tContext.Responses
+                .Single(x => x.TaskId == taskId);
+
+            return View("AddTask", task);
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(AddTask t)
+        {
+            tContext.Update(t);
             tContext.SaveChanges();
-            return View();
+
+            return RedirectToAction("QuadrantsView");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int taskId)
+        {
+            var task = tContext.Responses
+                .Single(x => x.TaskId == taskId);
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(AddTask t)
+        {
+            tContext.Responses.Remove(t);
+            tContext.SaveChanges();
+
+            return RedirectToAction("QuadrantsView");
         }
 
     }
