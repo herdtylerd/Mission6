@@ -25,7 +25,8 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
-            return View();
+            var applications = tContext.responses.ToList();
+            return View(applications);
         }
         public IActionResult Privacy()
         {
@@ -51,5 +52,6 @@ namespace Mission6.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
