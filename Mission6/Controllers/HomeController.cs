@@ -26,11 +26,14 @@ namespace Mission6.Controllers
 
         public IActionResult QuadrantsView()
         {
+
             var tasks = tContext.Responses
                 .Include(x => x.Category)
                 .ToList();
             return View(tasks);
         } 
+
+
 
 
         // Add tasks

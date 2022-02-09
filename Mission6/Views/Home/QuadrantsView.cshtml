@@ -4,7 +4,7 @@
 @{
 }
 
-@model List<ApplicationResponse>
+@model List<AddTask>
 
 <div class="container">
     
@@ -18,36 +18,47 @@
         <div class="col border rounded text-center">
 
             <table>
-                @foreach (var x in Model)
+                <tr>Quadrant 1</tr>
+                @foreach (var x in Model.Where(y => y.Quadrant == 1))
                 {
                 <tr>
                     <td>@x.Task</td>
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.TaskId">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="EditTask" asp-route-applicationid="@x.TaskId">Edit</a></td>
                     <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskId">Delete</a></td>
                 </tr>
                 }
-
             </table>
             
 
-                <ul class="list-unstyled">
+                @*<ul class="list-unstyled">
                     <lh>Q1</lh>
-                    <li>@x.task</li>
+                    <li>Task</li>
                 </ul>
                 <button>edit</button>
-                <button>delete</button>
+                <button>delete</button>*@
 
            
 
         </div>
         <div class="col border rounded text-center">
-            <ul class="list-unstyled">
+            <table>
+                <tr>Quadrant 2</tr>
+                @foreach (var x in Model.Where(y => y.Quadrant == 2))
+                {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-applicationid="@x.TaskId">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskId">Delete</a></td>
+                    </tr>
+                }
+            </table>
+            @*<ul class="list-unstyled">
                 <lh>Q2</lh>
                 <li>thing 1</li>
                 <li>thing 2</li>
                 <li>thing 3</li>
                 <li>thing 4</li>
-            </ul>
+            </ul>*@
         </div>
     </div>
     <div class="row">
@@ -55,22 +66,44 @@
             <div class="col-2"><h4>Not Important</h4></div>
         </div>
         <div class="col border rounded text-center ">
-            <ul class="list-unstyled">
-                <lh>Q3</lh>
-                <li>thing 1</li>
-                <li>thing 2</li>
-                <li>thing 3</li>
-                <li>thing 4</li>
-            </ul>
+            <table>
+                <tr>Quadrant 3</tr>
+                @foreach (var x in Model.Where(y => y.Quadrant == 3))
+                {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-applicationid="@x.TaskId">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskId">Delete</a></td>
+                    </tr>
+                }
+            </table>
+            @*<ul class="list-unstyled">
+            <lh>Q3</lh>
+            <li>thing 1</li>
+            <li>thing 2</li>
+            <li>thing 3</li>
+            <li>thing 4</li>
+        </ul>*@
         </div>
         <div class="col border rounded text-center">
-            <ul class="list-unstyled">
-                <lh>Q4</lh>
-                <li>thing 1</li>
-                <li>thing 2</li>
-                <li>thing 3</li>
-                <li>thing 4</li>
-            </ulclass="list-unstyled">
+            <table>
+                <tr>Quadrant 4</tr>
+                @foreach (var x in Model.Where(y => y.Quadrant == 4))
+                {
+                    <tr>
+                        <td>@x.Task</td>
+                        <td><a asp-controller="Home" asp-action="EditTask" asp-route-applicationid="@x.TaskId">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskId">Delete</a></td>
+                    </tr>
+                }
+            </table>
+            @*<ul class="list-unstyled">
+            <lh>Q4</lh>
+            <li>thing 1</li>
+            <li>thing 2</li>
+            <li>thing 3</li>
+            <li>thing 4</li>
+        </ul class="list-unstyled">*@
         </div>
     </div>
 </div>
