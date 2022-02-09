@@ -32,6 +32,7 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
+            var categories = tContext.Categories.ToList();
             return View();
         }
 
