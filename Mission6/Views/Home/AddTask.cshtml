@@ -2,6 +2,7 @@
     ViewData["Title"] = "Add Task";
 }
 
+
 @model Mission6.Models.AddTask
 
 
@@ -9,9 +10,13 @@
     <form method="post">
         <div asp-validation-summary="All"></div>
 
-         Task, due date, quadrant,
-    Category (Dropdown: Home, School,
-    work, Church), Completed (True/False)
+
+
+
+        <!-- Task, due date, quadrant,
+        Category (Dropdown: Home, School,
+        work, Church), Completed (True/False)-->
+
         <label asp-for="Task">Task</label>
         <input type="text" asp-for="Task" /><br />
 
@@ -35,6 +40,7 @@
             </option>
         </select><br />
 
+
         <label asp-for="CategoryId">Category</label>
         <select asp-for="CategoryId">
             <option value="">Select a Category</option>
@@ -42,6 +48,7 @@
             {
                 <option value="@c.CategoryId">@c.CategoryName</option>
             }
+
         </select><br />
 
         <label asp-for="Completed">Completed</label>
@@ -51,6 +58,6 @@
             <option value="false">False</option>
         </select><br />
 
-        <input type="submit" value="Add Task" asp-controller="Home" asp-action="Add Task" class="btn btn-primary"/>
+        <input type="submit" value="Add Task" asp-controller="Home" asp-action="Add Task" class="btn btn-primary" />
     </form>
 </div>

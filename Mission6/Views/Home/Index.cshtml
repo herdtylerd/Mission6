@@ -2,10 +2,23 @@
     ViewData["Title"] = "Time Management";
 }
 
-<div>
-    <h2>Stephen Covey's Time Management Matrix</h2>
-    <p>In the book <i>The 7 Habits of Highly Effective People</i> Stephen Covey teaches that to best manage 
-    time, people should develop the habit of "Putting First Things First." This site was created to manage 
-    tasks according to Covey's Time Management Matrix.</p>
-    <a asp-controller="Home" asp-action="AddTask" class="btn btn-primary">Add a task</a>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Stephen Covey's Time Management Matrix</h2>
+            <p>
+                In the book <i>The 7 Habits of Highly Effective People</i> Stephen Covey teaches that to best manage
+                time, people should develop the habit of "Putting First Things First." This site was created to manage
+                tasks according to Covey's Time Management Matrix.
+            </p>
+            <a asp-controller="Home" asp-action="AddTask" class="btn btn-primary">Add a task</a>
+        </div>
+
+        <div class="col-6">
+            <img src="~/img/To-Do-List.jpg" width="400"/>
+        </div>
+        
+    </div>
 </div>
