@@ -18,7 +18,7 @@ namespace Mission6.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
-            modelBuilder.Entity("Mission4.Models.Category", b =>
+            modelBuilder.Entity("Mission6.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace Mission6.Migrations
 
             modelBuilder.Entity("Mission6.Models.AddTask", b =>
                 {
-                    b.HasOne("Mission4.Models.Category", "Category")
+                    b.HasOne("Mission6.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId1");
                 });
