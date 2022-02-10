@@ -50,7 +50,6 @@ namespace Mission6.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Viewbag
                 tContext.Add(at);
                 tContext.SaveChanges();
                 return RedirectToAction("QuadrantsView");
@@ -65,7 +64,7 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult EditTask(int taskId)
         {
-            // Viewbag
+            ViewBag.Categories = tContext.Categories.ToList();
 
             var task = tContext.Responses
                 .Single(x => x.TaskId == taskId);
